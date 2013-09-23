@@ -1,0 +1,58 @@
+4.1 breakdown
+
+GPS
+Google maps
+Debugging
+Gps.init
+Gps.startInterval
+Gps.updatePosition
+gps.setPosition
+Gps.checkLocations(event)
+Gps.calcDistance(p1,p2)
+
+Maps.generateMap
+Maps.isNumber
+Maps.updatePositie(event)
+
+Debug.geoErrorHandler
+Debug.debugMessage
+Debug.setCustomDebugging
+
+.speak is aanroepen
+Speak: function = aanmaken.
+
+
+4.2 breakdown in javascript
+function Gps(name) {
+
+	init = function() {
+	};
+	startInterval = function() {
+	};
+	updatePosition = function() {
+	};
+	setPosition = function() {
+	};
+	checkLocations(event) = function() {
+	};
+	calcDistance(p1,p2) = function() {
+	};
+}
+function Maps(name) {
+
+	generateMap = function() {
+	};
+	isNumber = function() {
+	};
+	updatePositie(event)= function() {
+	};
+}
+function Debug(name) {
+
+	geoErrorHandler = function() {
+	};
+	debugMessage = function() {
+	};
+	setCustomDebugging function() {
+	};
+}

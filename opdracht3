@@ -1,0 +1,31 @@
+3.1 local scoping
+
+Function Local () {
+Var Iterator  = 1
+Var min = 1
+Var max = 3
+}
+Mag ook met komma’s onderscheiden:
+var iterator = 1,
+		max = 10,
+		min = 0;
+
+3.2 global scope
+
+Var iterator = 1
+Var min = 1
+Var max = 3
+Fuction Local () {}
+
+3.3 closure
+
+Het is een functie in een functie. De child functie voert de variabele uit wanneer de parentfunctie al uitgevoerd is. De buitenste functie wordt eerder uitgevoerd. De bovenste functie staat dicht terwijl de childfunctie doorgaat. Ze refereren naar onafhankelijke variabelen.
+
+function someFunction() {
+  var name = "Hallo";
+  function innerFunction() {
+    alert(name);
+  }
+  innerFunction();
+}
+someFunction();

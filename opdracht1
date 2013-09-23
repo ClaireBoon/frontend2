@@ -1,0 +1,29 @@
+Opdracht 1
+
+
+#nojquery
+##1.1
+5 voordelen:
+-	makkelijk
+-	overzichtelijk
+-	browser onafhankelijk
+-	veel gratis plugins te downloaden
+-	bestandsgrootte van library is klein
+-	goede documentatie
+-	versch jquery versies: mobile, ui
+-	zitten al veel functionaliteiten in
+-	cross browser > ie, maar ook chrome begrijpt de code
+-	grote community
+-	handige pre fabs
+Nadelen:
+-	niet altijd nodig (onnodige script laden)
+-	nieuwste versie werkt niet in alle browsers
+-	veel rekenkracht (batterij)
+-	kan confusing zijn omdat het zo makkelijk is
+
+##1.2	Functionaliteiten
+-	Animaties (Slide show) > Anim, slow.js, Xui (voor mobile web apps), swipe
+-	Selectoren  >Sly, micro-selector, Zest
+-	Ajax 
+-	Bewerken van dom. Makkelijk elementen toevoegen en weghalen > Vine > events library die binden, ontbinden en het triggeren van events op DOM elementen of js objecten.
+-	Css > modernizr > vindt css3 en html5 features die bruikbaar zijn in de huidige browser
