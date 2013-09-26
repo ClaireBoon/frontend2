@@ -13,15 +13,15 @@
 		<h1>Tournament: Amsterdam Ultimate Autumn</h1>
 		<nav>
 			<ul>
-				<li><a href="#/page1">Game</a></li>
-				<li><a href="#/page2">Ranking</a></li>
-				<li><a href="#/page3">Schedule</a></li>
+				<li><a href="#/game">Game</a></li>
+				<li><a href="#/ranking">Ranking</a></li>
+				<li><a href="#/schedule">Schedule</a></li>
 			</ul>
 		</nav>
 	</header>
 
-	<article id="content" class="col">
-		<section data-route="page1" class="active">
+	<article id="content"> <!-- class="col" -->
+		<section data-route="game" class="active">
 			<h1 data-bind="title"></h1>
 			<table>
                 <tr>
@@ -37,14 +37,17 @@
                 </tr>
             </table>
 
-		    <table data-bind="game">
-		    	<tr>
-                    <th>Score</th>
-                    <th>Team</th>
-                    <th>Points</th>
-                    <th>Team</th>
-                </tr>
+		    <table>
+		    	<thead>
+			    	<tr>
+	                    <th>Score</th>
+	                    <th>Team</th>
+	                    <th>Points</th>
+	                    <th>Team</th>
+	                </tr>
+                </thead>
 
+				<tbody data-bind="game">
 					<tr>
 						<td data-bind="score"></td>
 						<td data-bind="team1"></td>
@@ -52,22 +55,26 @@
 							 <span data-bind="team2Score"</span></td>
 						<td data-bind="team2"></td>
 					</tr>
+				</tbody>
 			</table>
    		</section>
 
-		<section data-route="page2">
+		<section data-route="ranking">
 			<h1 data-bind="title"></h1>
 
-		    <table data-bind="ranking">
-		    	<tr>
-                    <th>Team</th>
-                    <th>W</th>
-                    <th>L</th>
-                    <th>Points won</th>
-                    <th>Points lost</th>
-                    <th>+/-</th>
-                </tr>
+		    <table>
+		    	<thead>
+			    	<tr>
+	                    <th>Team</th>
+	                    <th>W</th>
+	                    <th>L</th>
+	                    <th>Points won</th>
+	                    <th>Points lost</th>
+	                    <th>+/-</th>
+	                </tr>
+          	    </thead>
 
+				<tbody data-bind="ranking">
 					<tr>
 						<td data-bind="team"></td>
 						<td data-bind="Win"></td>
@@ -77,18 +84,24 @@
 						<td data-bind="Pw"></td>
 						<td data-bind="Pl"></td>
 					</tr>
+				</tbody>
 			</table>
 		</section>
 
-		<section data-route="page3">
+		<section data-route="schedule">
 			<h1 data-bind="title"></h1>
-		    <table data-bind="schedule">
-		    	<tr>
-                    <th>Monday 18 March</th>
-                    <th>Team</th>
-                    <th>Result</th>
-                    <th>Team</th>
-                </tr>
+
+		    <table>
+		    	<thead>
+			    	<tr>
+	                    <th>Monday 18 March</th>
+	                    <th>Team</th>
+	                    <th>Result</th>
+	                    <th>Team</th>
+	                </tr>
+            	</thead>
+
+            	<tbody data-bind="schedule"> 
 					<tr>
 						<td data-bind="date"></td>
 						<td data-bind="team1"></td>
@@ -96,6 +109,7 @@
 							<span data-bind="team2Score"</span></td>
 						<td data-bind="team2"></td>
 					</tr>
+				</tbody>
 			</table>
 		</section>
 	</article>

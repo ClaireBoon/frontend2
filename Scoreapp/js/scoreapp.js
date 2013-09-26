@@ -1,8 +1,10 @@
-var SCOREAPP = SCOREAPP || {};
+var SCOREAPP = SCOREAPP || {}; //scoreapp is een bestaand object (met waarde) of leeg object (geen waarde). Bestaande objecten kunnen niet overgeschreven worden. Voorkomt conflicten.
 
+
+//self invoking anonymous function: alle objecten hierbinnen kunnen niet vanuit buiten aangeroepen worden en voorkomt dus conflicten
 (function() {
 
-SCOREAPP.page1 = {
+SCOREAPP.game = {
         title: "Pool A - Score: Boomsquad vs. Burning Snow",
 		game: [
 		     { score: "1", team1: "Boomsquad", team1Score: "1", team2: "Burning Snow", team2Score: "0"},
@@ -32,7 +34,7 @@ SCOREAPP.page1 = {
 
 };
 
-SCOREAPP.page2 = {
+SCOREAPP.ranking = {
 		title: "Pool A - Ranking",
 		ranking: [
 		    { team: "Chasing", Win: "2", Lost: "2", Sw: "7", Sl: "9", Pw: "35", Pl: "39"},
@@ -43,7 +45,7 @@ SCOREAPP.page2 = {
 		    ]
 };
 
-SCOREAPP.page3 = {
+SCOREAPP.schedule = {
 		title:'Schedule',
 		schedule: [
 		    { date: "Monday, 9:00am", team1: "Chasing", team1Score: "13", team2: "Amsterdam Money Gang", team2Score: "9"},
@@ -59,43 +61,45 @@ SCOREAPP.page3 = {
 		    ]
 };
 
-
+//zorgt dat de router geinitialiseerd wordt. (startpunt)
 SCOREAPP.controller = {
 		init: function () {
-			//initialize router
+			//initialiseert router
 			SCOREAPP.router.init();
 }
 };
+
 //router
 
 SCOREAPP.router = {
 		init: function () {
+
+			//initialiseert de volgende gegevens:
 			routie({
-				"/page1": function() {
-			    	SCOREAPP.page.page1();
+				"/game": function() {
+			    	SCOREAPP.state.render('game');
 				},
-			    '/page2': function() {
-			    	SCOREAPP.page.page2(); // Hij pakt hier het object page met de methode page2 en voert die functie uit //
+			    "/ranking": function() {
+			    	SCOREAPP.state.render('ranking'); // Hij pakt hier het object state met de methode rendert. Hij rendert dan case ranking. //
 			    },
 
-			    '/page3': function() {
-			    	SCOREAPP.page.page3();
+			    "/schedule": function() {
+			    	SCOREAPP.state.render('schedule');
 			    },
-			    '*': function() {
-			    	SCOREAPP.page.page1();
-			    }
+			  
 			});
 
 		},
 
+		//hier verandert hij de inhoud en de functie van de states
 		change: function () {
 			//maakt variabelen aan
-            var route = window.location.hash.slice(2),
-                sections = qwery('section[data-route]'), // hier pakt hij alle sections in de html
-                section = qwery('[data-route=' + route + ']')[0];  // data-route is bv page1 + uitkomst van route + ?? en dan alleen die (0)
+            var route = window.location.hash.slice(2), // pakt gedeelte na # en /?
+                sections = qwery('section'), // hier pakt hij alle sections in de html
+                section = qwery('[data-route=' + route + ']')[0];  // data-route is bv game + uitkomst van route en dan alleen die (0) er kunnen meerdere pages zijn met dezelfde naam.
 
 
-            // Show active section, hide all other
+            // Laat de active section zien en verwijdert de anderen: display none.
             if (section) {
             	for (var i=0; i < sections.length; i++){ 
             		sections[i].classList.remove('active'); // verwijder de andere sections
@@ -112,27 +116,38 @@ SCOREAPP.router = {
 	};
 
 		
-	// Pages. hier verandert hij van "pagina"
-	SCOREAPP.page = {
-		page1: function () {
-			Transparency.render(qwery('[data-route=page1')[0], SCOREAPP.page1);
-			SCOREAPP.router.change();
-		},
+	// hier verandert hij van state
+	SCOREAPP.state = {
+		render: function (route) {
+			var data;
+			switch (route){
+				case 'game': 
+				data = SCOREAPP.game;
+				break;
 
-		page2: function () {
-			Transparency.render(qwery('[data-route=page2')[0], SCOREAPP.page2);
-			SCOREAPP.router.change();
-		},
+				case 'ranking': 
+				data = SCOREAPP.ranking;
+				break;
 
-		page3: function () {
-			Transparency.render(qwery('[data-route=page3')[0], SCOREAPP.page3);
-			SCOREAPP.router.change();
+				case 'schedule': 
+				data = SCOREAPP.schedule;
+				break;
+
+				default : 
+				data = SCOREAPP.game;
+			}
+
+			Transparency.render(qwery('[data-route='+route+']')[0], data);//rendert de template (script naar DOM) qwery selecteert: dataroute game (de eerste) uit DOM en het object game uit namespace
+			SCOREAPP.router.change(); //verandert van section. zegt tegen router dat hij verandert is qua inhoud en functie.
+
 		}
 	}
+		
+	
 
  //DOM ready
  domready(function(){
- 		// Kickstart application
+ 		// start meteen de applicatie als dom geladen is.
  		SCOREAPP.controller.init();
  	});
 

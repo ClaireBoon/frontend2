@@ -152,7 +152,7 @@ td nth-of-type(2) {
 
 /* Dead Simple Grid (c) 2012 Vladimir Agafonkin */
 
-.col {
+/*.col {
 	padding: 0 .5em;
 }
 .row .row {
@@ -177,6 +177,7 @@ td nth-of-type(2) {
 		        box-sizing: border-box;
 	}
 }
+*/
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen 
